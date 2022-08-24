@@ -115,6 +115,6 @@ for i in user_ids:
     print(res)
     
 weather_users = weather_user.split(",")
-for j in user_ids:
+for j in weather_users:
     resp = wm.send_template(j, weather_template, data)
     print(resp)

@@ -96,7 +96,7 @@ data = {"today": {"value": today.strftime("%Y-%m-%d")},
         "wind": {"value": wind}, "airQuality": {"value": airQuality},
         "love_days": {"value": get_count()},
         "birthday_left": {"value": "距离你的生日还有 " + str(get_birthday()) + " 天   (๑♡ω♡๑)", "color": "#002FA7"},
-
+        "words": {"value": get_words(), "color": get_random_color()},
         "comf": {"value": "舒适指数：『" + comf['brf'] + "』 " + comf['txt'], "color": "#FF0000"},
         "drsg": {"value": "穿衣指数：『" + drsg['brf'] + "』 " + drsg['txt'], "color": "#FF7F00"},
         "flu": {"value": "流感指数：『" + flu['brf'] + "』 " + flu['txt'], "color": "#FFFF00"},

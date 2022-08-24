@@ -11,6 +11,7 @@ dayOfWeek = datetime.now().isoweekday()
 
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
+city_code = os.environ['CITY_CODE']
 birthday = os.environ['BIRTHDAY']
 
 app_id = os.environ["APP_ID"]
@@ -26,6 +27,14 @@ def get_weather():
     weather = res['data']['list'][0]
     return weather['weather'], math.floor(weather['temp']), weather['low'], weather['high'], weather['wind'], weather[
         'airQuality']
+
+
+def get_lifestyle():
+    url = "https://free-api.heweather.net/s6/weather?key=04cd3530b6454d78899e2af9a01d3039&location=" + city_code
+    res = requests.get(url).json()
+    lifestyle = res['HeWeather6'][0]['lifestyle']
+    # 舒适指数，穿衣指数，流感指数，运动指数，出行指数，辐射指数，洗车指数，空气指数
+    return lifestyle[0], lifestyle[1], lifestyle[2], lifestyle[3], lifestyle[4], lifestyle[5], lifestyle[7]
 
 
 def get_count():
@@ -73,6 +82,8 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature, low, high, wind, airQuality = get_weather()
+# 舒适指数，穿衣指数，流感指数，运动指数，出行指数，辐射指数，洗车指数，空气指数
+comf, drsg, flu, sport, trav, uv, air = get_lifestyle()
 happyWord = "要记住，每天都是快乐的一天！٩(๑^o^๑)۶"
 data = {"today": {"value": today.strftime("%Y-%m-%d")},
         "dayOfWeek": {"value": get_day_of_week()},
@@ -85,10 +96,18 @@ data = {"today": {"value": today.strftime("%Y-%m-%d")},
         "wind": {"value": wind}, "airQuality": {"value": airQuality},
         "love_days": {"value": get_count()},
         "birthday_left": {"value": "距离你的生日还有 " + str(get_birthday()) + " 天   (๑♡ω♡๑)", "color": "#002FA7"},
-        "words": {"value": get_words(), "color": get_random_color()}}
+
+        "comf": {"value": "舒适指数：『" + comf['brf'] + "』 " + comf['txt'], "color": "#FF0000"},
+        "drsg": {"value": "穿衣指数：『" + drsg['brf'] + "』 " + drsg['txt'], "color": "#FF7F00"},
+        "flu": {"value": "流感指数：『" + flu['brf'] + "』 " + flu['txt'], "color": "#FFFF00"},
+        "sport": {"value": "运动指数：『" + sport['brf'] + "』 " + sport['txt'], "color": "#00FF00"},
+        "trav": {"value": "出行指数：『" + trav['brf'] + "』 " + trav['txt'], "color": "#00FFFF"},
+        "uv": {"value": "辐射指数：『" + uv['brf'] + "』 " + uv['txt'], "color": "#0000FF"},
+        "air": {"value": "空气指数：『" + air['brf'] + "』 " + air['txt'], "color": "#8B00FF"},
+
+        "nspb": {"value": "  "}}
 
 user_ids = user_id.split(",")
 for i in user_ids:
     res = wm.send_template(i, template_id, data)
     print(res)
-

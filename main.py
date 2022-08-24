@@ -51,6 +51,7 @@ def get_words():
 def get_random_color():
     return "#%06x" % random.randint(0, 0xFFFFFF)
 
+
 def get_day_of_week():
     if dayOfWeek == 1:
         return "一"
@@ -67,15 +68,23 @@ def get_day_of_week():
     elif dayOfWeek == 7:
         return "七"
 
+
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature, low, high, wind, airQuality = get_weather()
-data = {"today": {"value": today.strftime("%Y-%m-%d")}, "dayOfWeek": {"value": get_day_of_week()}, "city": {"value": city},
-        "weather": {"value": wea}, "temperature": {"value": temperature},
-        "low": {"value": int(low)}, "high": {"value": int(high)},
+happyWord = "要记住，每天都是快乐的一天！٩(๑^o^๑)۶"
+data = {"today": {"value": today.strftime("%Y-%m-%d")},
+        "dayOfWeek": {"value": get_day_of_week()},
+        "happyWord": {"value": happyWord, "color": "#ffb6b6"},
+        "city": {"value": city, "color": "#4dc6f5"},
+        "weather": {"value": wea, "color": "#a7dc46"},
+        "temperature": {"value": str(int(temperature)) + "℃", "color": "#ef8751"},
+        "low": {"value": str(int(low)) + "℃", "color": "#015bb2"},
+        "high": {"value": str(int(high)) + "℃", "color": "#ff2518"},
         "wind": {"value": wind}, "airQuality": {"value": airQuality},
-        "love_days": {"value": get_count()}, "birthday_left": {"value": get_birthday()},
+        "love_days": {"value": get_count()},
+        "birthday_left": {"value": "距离你的生日还有 " + str(get_birthday()) + " 天   (๑♡ω♡๑)", "color": "#002FA7"},
         "words": {"value": get_words(), "color": get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)

@@ -100,7 +100,7 @@ data = {"today": {"value": today.strftime("%Y-%m-%d")},
 
         "words": {"value": get_words(), "color": get_random_color()},
         "comf": {"value": "舒适指数：『" + comf['brf'] + "』 " + comf['txt'], "color": "#00FF00"},
-        "drsg": {"value": "穿衣指数：『" + drsg['brf'] + "』 " + drsg['txt'], "color": "#FF7F00"},
+        "drsg": {"value": "穿衣指数：『" + drsg['brf'] + "』 " + drsg['txt'], "color": "#0000FF"},
         "flu": {"value": "流感指数：『" + flu['brf'] + "』 " + flu['txt'], "color": "#FF0000"},
         "sport": {"value": "运动指数：『" + sport['brf'] + "』 " + sport['txt'], "color": "#00FF00"},
         "trav": {"value": "出行指数：『" + trav['brf'] + "』 " + trav['txt'], "color": "#00FFFF"},

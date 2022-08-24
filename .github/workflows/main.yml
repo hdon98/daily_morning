@@ -32,3 +32,4 @@ jobs:
       CITY: ${{ secrets.CITY }}
       CITY_CODE: ${{ secrets.CITY_CODE }}
       WEATHER_TEMPLATE: ${{ secrets.WEATHER_TEMPLATE }}
+      WEATHER_USER: ${{ secrets.WEATHER_USER }}

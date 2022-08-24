@@ -85,18 +85,19 @@ wea, temperature, low, high, wind, airQuality = get_weather()
 # 舒适指数，穿衣指数，流感指数，运动指数，出行指数，辐射指数，洗车指数，空气指数
 comf, drsg, flu, sport, trav, uv, air = get_lifestyle()
 happyWord = "要记住，每天都是快乐的一天！٩(๑^o^๑)۶"
-data = {"today": {"value": today.strftime("%Y-%m-%d")},
-        "dayOfWeek": {"value": get_day_of_week()},
+data = {"today": {"value": "今天是 "+today.strftime("%Y-%m-%d")},
+        "dayOfWeek": {"value": "星期" + get_day_of_week()},
         "happyWord": {"value": happyWord, "color": "#ffb6b6"},
-        "city": {"value": city, "color": "#4dc6f5"},
-        "weather": {"value": wea, "color": "#a7dc46"},
-        "temperature": {"value": str(int(temperature)) + "℃", "color": "#ef8751"},
-        "low": {"value": str(int(low)) + "℃", "color": "#015bb2"},
-        "high": {"value": str(int(high)) + "℃", "color": "#ff2518"},
-        "wind": {"value": wind}, "airQuality": {"value": airQuality},
+        "city": {"value": "当前城市 " + city, "color": "#4dc6f5"},
+        "weather": {"value": " 的天气是 " + wea, "color": "#a7dc46"},
+        "temperature": {"value": " 温度 " + str(int(temperature)) + "℃", "color": "#ef8751"},
+        "low": {"value": "最低气温：" + str(int(low)) + "℃", "color": "#015bb2"},
+        "high": {"value": "最高气温：" + str(int(high)) + "℃", "color": "#ff2518"},
+        "wind": {"value": "今日风向：" + wind}, "airQuality": {"value": "空气质量：" + airQuality},
         "love_days": {"value": get_count()},
         "birthday_left": {"value": "距离你的生日还有 " + str(get_birthday()) + " 天   (๑♡ω♡๑)", "color": "#002FA7"},
         "words": {"value": get_words(), "color": get_random_color()},
+        
         "comf": {"value": "舒适指数：『" + comf['brf'] + "』 " + comf['txt'], "color": "#FF0000"},
         "drsg": {"value": "穿衣指数：『" + drsg['brf'] + "』 " + drsg['txt'], "color": "#FF7F00"},
         "flu": {"value": "流感指数：『" + flu['brf'] + "』 " + flu['txt'], "color": "#FFFF00"},

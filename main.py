@@ -86,5 +86,9 @@ data = {"today": {"value": today.strftime("%Y-%m-%d")},
         "love_days": {"value": get_count()},
         "birthday_left": {"value": "距离你的生日还有 " + str(get_birthday()) + " 天   (๑♡ω♡๑)", "color": "#002FA7"},
         "words": {"value": get_words(), "color": get_random_color()}}
-res = wm.send_template(user_id, template_id, data)
-print(res)
+
+user_ids = user_id.split(",")
+for i in user_ids:
+    res = wm.send_template(i, template_id, data)
+    print(res)
+

@@ -99,13 +99,13 @@ data = {"today": {"value": today.strftime("%Y-%m-%d")},
         "birthday_left": {"value": "距离你的生日还有 " + str(get_birthday()) + " 天   (๑♡ω♡๑)", "color": "#002FA7"},
 
         "words": {"value": get_words(), "color": get_random_color()},
-        "comf": {"value": "舒适指数：『" + comf['brf'] + "』 " + comf['txt'], "color": "#00FF00"},
-        "drsg": {"value": "穿衣指数：『" + drsg['brf'] + "』 " + drsg['txt'], "color": "#6093e1"},
-        "flu": {"value": "流感指数：『" + flu['brf'] + "』 " + flu['txt'], "color": "#FF0000"},
-        "sport": {"value": "运动指数：『" + sport['brf'] + "』 " + sport['txt'], "color": "#00FF00"},
-        "trav": {"value": "出行指数：『" + trav['brf'] + "』 " + trav['txt'], "color": "#00FFFF"},
-        "uv": {"value": "辐射指数：『" + uv['brf'] + "』 " + uv['txt'], "color": "#0000FF"},
-        "air": {"value": "空气指数：『" + air['brf'] + "』 " + air['txt'], "color": "#8B00FF"},
+        "comf": {"value": "舒适指数：『" + comf['brf'] + "』 " + comf['txt']},
+        "drsg": {"value": "穿衣指数：『" + drsg['brf'] + "』 " + drsg['txt']},
+        "flu": {"value": "流感指数：『" + flu['brf'] + "』 " + flu['txt']},
+        "sport": {"value": "运动指数：『" + sport['brf'] + "』 " + sport['txt']},
+        "trav": {"value": "出行指数：『" + trav['brf'] + "』 " + trav['txt']},
+        "uv": {"value": "辐射指数：『" + uv['brf'] + "』 " + uv['txt']},
+        "air": {"value": "空气指数：『" + air['brf'] + "』 " + air['txt']},
         }
 
 user_ids = user_id.split(",")
